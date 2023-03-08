@@ -1,0 +1,25 @@
+﻿using _3_Asp.Net_MVC.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace _3_Asp.Net_MVC.Configurations
+{
+    public class BillConfiguration : IEntityTypeConfiguration<Bill>
+    {
+        public void Configure(EntityTypeBuilder<Bill> builder)
+        {
+            builder.ToTable("Bill"); // Đặt tên cho bảng
+            builder.HasKey(c => c.ID); // Set khóa chính
+            // Set thuộc tính cho các cột
+            builder.Property(c => c.UserID).
+                HasColumnName("UserID").IsRequired();
+            builder.Property(c=>c.Status).HasColumnType("int")
+                .IsRequired();
+            builder.Property(c => c.CreateDate).HasColumnType("Datetime");
+            // Khóa ngoại tính sau =)))
+
+
+
+        }
+    }
+}
