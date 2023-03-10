@@ -6,6 +6,7 @@
         public DateTime CreateDate { get; set; }
         public Guid UserID { get; set; }
         public int Status { get; set; }
-        public ICollection<BillDetail> BillDetails { get;set; } 
+        public ICollection<BillDetail> BillDetails { get;set; }
+        public User User { get; set; }
     }
 }

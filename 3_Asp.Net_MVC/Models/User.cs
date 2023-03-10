@@ -8,6 +8,7 @@
         public string RoleId { get; set; }
         public string Status { get; set; }
         public virtual ICollection<Role> Roles { get; set;}
-        public virtual Cart Cart { get; set; }
+        public virtual Bill? Bill { get; set; }
+        public virtual Cart? Cart { get; set; }
     }
 }

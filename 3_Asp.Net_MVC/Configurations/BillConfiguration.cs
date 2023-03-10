@@ -10,14 +10,15 @@ namespace _3_Asp.Net_MVC.Configurations
         {
             builder.ToTable("Bill"); // Đặt tên cho bảng
             builder.HasKey(c => c.ID); // Set khóa chính
-            // Set thuộc tính cho các cột
+            // Set thuộc tính cho mỗi cột, mỗi Property là 1 cột
             builder.Property(c => c.UserID).
                 HasColumnName("UserID").IsRequired();
             builder.Property(c=>c.Status).HasColumnType("int")
                 .IsRequired();
             builder.Property(c => c.CreateDate).HasColumnType("Datetime");
-            // Khóa ngoại tính sau =)))
-
+            // Khóa ngoại tính tiếp
+            builder.HasOne(p => p.User).WithMany().
+                HasForeignKey(p => p.UserID);
 
 
         }

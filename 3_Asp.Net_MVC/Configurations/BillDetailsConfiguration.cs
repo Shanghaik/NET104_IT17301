@@ -14,6 +14,8 @@ namespace _3_Asp.Net_MVC.Configurations
             // Set khóa ngoại - liên kết
             builder.HasOne(p => p.Bill).WithMany(q => q.BillDetails).
                 HasForeignKey(p => p.BillID);
+            builder.HasOne(p => p.Product).WithMany(q => q.BillDetails).
+                HasForeignKey(p => p.ProductID);
 
         }
     }
