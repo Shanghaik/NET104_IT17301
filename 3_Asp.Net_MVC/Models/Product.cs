@@ -9,7 +9,8 @@
         public int Status { get; set; }
         public string Supplier { get; set; }
         public string Description { get; set; }
-        // public virtual ICollection<BillDetail>? BillDetails { get; set; }
+        public virtual ICollection<BillDetail> BillDetails { get; set; }
+        
 
     }
 }
