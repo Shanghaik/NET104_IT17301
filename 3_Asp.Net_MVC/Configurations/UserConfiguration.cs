@@ -12,7 +12,7 @@ namespace _3_Asp.Net_MVC.Configurations
                 HasColumnType("varchar(256)");
             builder.Property(p => p.Username).IsRequired().
                 HasColumnType("varchar(256)");
-            builder.HasOne(p => p.Roles).WithOne();
+            //builder.HasOne(p => p.Roles).WithOne();
 
         }
     }

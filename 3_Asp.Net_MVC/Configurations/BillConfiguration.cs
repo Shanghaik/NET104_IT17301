@@ -17,8 +17,7 @@ namespace _3_Asp.Net_MVC.Configurations
                 .IsRequired();
             builder.Property(c => c.CreateDate).HasColumnType("Datetime");
             // Khóa ngoại tính tiếp
-            builder.HasOne(p => p.User).WithMany().
-                HasForeignKey(p => p.UserID);
+            builder.HasOne(p => p.User).WithMany(p=>p.Bill).HasForeignKey(p => p.UserID);
 
 
         }

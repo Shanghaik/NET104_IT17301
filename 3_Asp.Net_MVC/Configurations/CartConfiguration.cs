@@ -8,7 +8,7 @@ namespace _3_Asp.Net_MVC.Configurations
         public void Configure(EntityTypeBuilder<Cart> builder)
         {
             builder.HasKey(p => p.UserId);
-            builder.HasOne(p => p.User).WithOne();
+            //builder.HasOne(p => p.User).WithOne();
 
         }
     }
