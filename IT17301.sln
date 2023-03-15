@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_Asp.Net", "1_Asp.Net\1_Asp.Net.csproj", "{50DC1777-AEEE-4E31-829D-3E05C865F6FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1_Asp.Net", "1_Asp.Net\1_Asp.Net.csproj", "{50DC1777-AEEE-4E31-829D-3E05C865F6FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2_Asp.Net_3.1", "2_Asp.Net_3.1\2_Asp.Net_3.1.csproj", "{743C0983-4A53-4AEC-94C8-40F493ECB9EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2_Asp.Net_3.1", "2_Asp.Net_3.1\2_Asp.Net_3.1.csproj", "{743C0983-4A53-4AEC-94C8-40F493ECB9EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3_Asp.Net_MVC", "3_Asp.Net_MVC\3_Asp.Net_MVC.csproj", "{C1EE3A76-5579-40A2-8085-5D64E4145812}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3_Asp.Net_MVC", "3_Asp.Net_MVC\3_Asp.Net_MVC.csproj", "{C1EE3A76-5579-40A2-8085-5D64E4145812}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
