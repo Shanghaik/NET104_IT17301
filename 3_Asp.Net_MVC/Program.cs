@@ -1,7 +1,11 @@
+using _3_Asp.Net_MVC.IServices;
+using _3_Asp.Net_MVC.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<IProductServices, ProductServices>();
 
 var app = builder.Build();
 
