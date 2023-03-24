@@ -23,6 +23,8 @@ namespace _3_Asp.Net_MVC.Controllers
 
         public IActionResult Privacy()
         {
+            var x = HttpContext.Session.GetString("ThongBao"); // Lấy từ Session
+            ViewData["Session"] = x;
             return View(); // Thực hiện tới View có cùng tên với Action
         }
         public IActionResult Test()
@@ -110,14 +112,18 @@ namespace _3_Asp.Net_MVC.Controllers
             // 3. Sử dụng Tempdata
             string message = "Đói quá";
             // 4. Sử dụng Session 
-
+            HttpContext.Session.SetString("ThongBao", message); // Lưu vào Session
             TempData["Message"] = message;
+            var x = HttpContext.Session.GetString("ThongBao"); // Lấy từ Session
+            ViewData["Session"] = x;
             return View();
         }
         public IActionResult TestViewBag()
         {
             // ViewBag và ViewData chỉ có thể sử dụng trong 1 Action cụ thể mà
             // nó được khai báo
+            var x = HttpContext.Session.GetString("ThongBao"); // Lấy từ Session
+            ViewData["Session"] = x;
             return View();
         }
 
