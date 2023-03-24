@@ -1,0 +1,21 @@
+﻿@{
+    List<string> names = ViewData["NameList"] as List<string>;
+    // List<int> numbers = ViewBag.Number as dynamic; // Lỗi
+}
+<h2>Dữ liệu lấy từ ViewBag</h2>
+@{ // Để viết dc code trong View thì ta dùng @
+    foreach (var item in ViewBag.Number)
+    {
+        <h3>@item</h3>
+    }
+}
+<h2>Dữ liệu lấy từ ViewData</h2>
+@{
+    foreach (var item in names)
+    {
+        <h3>@item</h3>
+    }
+}
+<h3>
+    @TempData["Message"]
+</h3>

@@ -27,13 +27,13 @@ namespace _3_Asp.Net_MVC.Controllers
         }
         public IActionResult Test()
         {
-            Product pd = new Product();
-            pd.Name = "Crispy Snack";
-            pd.Supplier = "Oishii de tsu ne";
-            pd.Description = "Delicious";
-            pd.AvailableQuantity = 33;
-            pd.Status = 1;
-            return View(pd); // Thực hiện truyền 1 đối tượng vào một View nào đó
+            //Product pd = new Product();
+            //pd.Name = "Crispy Snack";
+            //pd.Supplier = "Oishii de tsu ne";
+            //pd.Description = "Delicious";
+            //pd.AvailableQuantity = 33;
+            //pd.Status = 1;
+            return RedirectToAction("MultipleData"); // Thực hiện truyền 1 đối tượng vào một View nào đó
         }
 
         public IActionResult Redirect()
@@ -93,6 +93,34 @@ namespace _3_Asp.Net_MVC.Controllers
             }
             else return View("Index");
         }
+
+        public IActionResult MultipleData()
+        {
+            // Thực hiện truyền dữ liệu sang View mà không bị giới hạn 
+            // Các cách
+            // 1. Sử dụng ViewData - cơ chế Key value
+            List<string> strings = new List<string>() { "ABC", "XYZ", "MNP" };
+            ViewData["NameList"] = strings; // Tạo 1 Viewdata chứa thông tin của List
+            // 2. Sử dụng ViewBag 
+            int[] arr = { 1, 2, 3, 4, 5, 6 };
+            ViewBag.Number = arr; // Tự đặt tên Number 
+            // Lưu ý: ViewData chỉ có thể gán 1 kiểu dữ liệu còn ViewBag thì nhiều
+            // ViewData là Dictionary còn ViewBag là dynamic type object
+            // Tốc độ truy xuất dữ liệu thì ViewData nhanh hown ViewBag
+            // 3. Sử dụng Tempdata
+            string message = "Đói quá";
+            // 4. Sử dụng Session 
+
+            TempData["Message"] = message;
+            return View();
+        }
+        public IActionResult TestViewBag()
+        {
+            // ViewBag và ViewData chỉ có thể sử dụng trong 1 Action cụ thể mà
+            // nó được khai báo
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
