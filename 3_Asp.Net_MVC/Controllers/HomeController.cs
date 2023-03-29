@@ -68,10 +68,10 @@ namespace _3_Asp.Net_MVC.Controllers
             return View(product);
         }
 
-        public IActionResult Details()
+        public IActionResult Details(Guid id)
         {
-
-            return View();
+            Product product = productServices.GetProductById(id);
+            return View(product);
         }
         public IActionResult Create() // Hiển thị View
         {
@@ -127,6 +127,38 @@ namespace _3_Asp.Net_MVC.Controllers
             return View();
         }
 
+        public IActionResult AddToCart(Guid id)
+        {
+            // Code
+            // Từ Id lấy được của Sản phẩm ta lấy ra sản phẩm đó
+            var product = productServices.GetProductById(id);
+            // Đọc dữ liệu từ Session xem trong Cart nó có cái gì chưa?
+            var products = SessionServices.GetObjFromSession(HttpContext.Session, "Cart");
+            if (products.Count == 0)
+            {
+                products.Add(product); // Nếu Cart rỗng thì thêm sp vào luôn
+                // Đưa dữ liệu về lại Session
+                SessionServices.SetObjToJson(HttpContext.Session, "Cart", products);
+            }
+            else
+            {
+                if (!SessionServices.CheckProductInCart(id, products)) // SP chưa nằm trong cart
+                {
+                    products.Add(product); // Nếu Cart chưa chứa sản phẩm thì thêm sp vào luôn
+                                           // Đưa dữ liệu về lại Session
+                    SessionServices.SetObjToJson(HttpContext.Session, "Cart", products);
+                }
+                else return Content("Sản phẩm đã nằm trong giỏ");
+            }
+            // Lấy từ Session
+            return RedirectToAction("ShowCart");
+        }
+        public IActionResult ShowCart()
+        {
+            // Đọc dữ liệu từ Session và truyền vào View
+            var products = SessionServices.GetObjFromSession(HttpContext.Session, "Cart");
+            return View(products);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
