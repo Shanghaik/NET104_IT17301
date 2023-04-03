@@ -59,13 +59,25 @@
                     @Html.DisplayFor(modelItem => item.Supplier)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Description)
+                    @if (System.IO.Path.GetExtension(item.Description) == ".jpg" ||
+                   System.IO.Path.GetExtension(item.Description) == ".png" ||
+                   System.IO.Path.GetExtension(item.Description) == ".jpeg" ||
+                   System.IO.Path.GetExtension(item.Description) == ".tiff" ||
+                   System.IO.Path.GetExtension(item.Description) == ".gif")
+                    {
+                        <img src="/images/@item.Description" height="100">
+                    }
+                    else
+                    {
+                        <span>Ảnh lỗi rồi =)))</span>                       
+                    }
+
                 </td>
                 <td>
                     @Html.ActionLink("Sửa", "Edit", new { id = item.ID}) |
                     @Html.ActionLink("Chi tiết", "Details", new { id = item.ID }) |
-                    @Html.ActionLink("Xóa", "Delete", new { id = item.ID }) 
-                    
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.ID })
+
                 </td>
             </tr>
         }
