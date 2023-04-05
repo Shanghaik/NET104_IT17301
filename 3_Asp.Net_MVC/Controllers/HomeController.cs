@@ -78,8 +78,22 @@ namespace _3_Asp.Net_MVC.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Product product) // Thực hiện chức năng thêm
+        public IActionResult Create(Product product, [Bind]IFormFile imageFile) // Thực hiện chức năng thêm
         {
+            var x = imageFile.FileName;
+            if (imageFile != null && imageFile.Length > 0) // Không null và không trống
+            {
+                //Trỏ tới thư mục wwwroot để lát nữa thực hiện việc Copy sang
+                var path = Path.Combine(
+                    Directory.GetCurrentDirectory(), "wwwroot", "images", imageFile.FileName);
+                using(var stream = new FileStream(path, FileMode.Create))
+                {
+                    // Thực hiện copy ảnh vừa chọn sang thư mục mới (wwwroot)
+                    imageFile.CopyTo(stream);
+                }
+                // Gán lại giá trị cho Description của đối tượng bằng tên file ảnh đã được sao chép
+                product.Description = imageFile.FileName;
+            }
             if (productServices.CreateProduct(product)) // Nếu thêm thành công
             {
                 return RedirectToAction("Redirect");
